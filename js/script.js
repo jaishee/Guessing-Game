@@ -15,14 +15,14 @@ setSecretButton.addEventListener('click', function () {
 
   // Check if the input is empty
   if (!secretNumberInput.value) {
-    message1.innerHTML = "⛔ Please enter a number.";
+    message1.innerHTML = "Please enter a number.";
     message1.classList.add("text-danger");
     return;
   }
 
   // Check if the number is between 1 and 10
   else if (secretNumber < 1 || secretNumber > 10 || isNaN(secretNumber)) {
-    message1.innerHTML = "🚫 Invalid input! Enter a number between 1 and 10.";
+    message1.innerHTML = "Invalid input! Enter a number between 1 and 10.";
     message1.classList.remove("text-success");
     message.classList.add("text-danger");
     return;
@@ -41,16 +41,16 @@ submitGuessButton.addEventListener('click', function () {
 
   // Check if the guess input is empty
   if (!guessInput.value) {
-    message.innerHTML = "⛔ Please enter a guess.";
+    message.innerHTML = "Please enter a guess.";
     message.classList.add("text-danger");
   } else if (userGuess < 1 || userGuess > 10 || isNaN(userGuess)) {
     // Check if the guess is between 1 and 10
-    message.innerHTML = "🚫 Invalid guess! Enter a number between 1 and 10.";
+    message.innerHTML = "Invalid guess! Enter a number between 1 and 10.";
     message.classList.remove("text-success");
     message.classList.add("text-danger");
   } else if (userGuess === secretNumber) {
     // Player 2 wins
-    message.innerHTML = `🎉 Correct! The number was ${secretNumber}. Player 2 wins!`;
+    message.innerHTML = `Congratulations! Player 2 wins!`;
     message.classList.remove("text-danger");
     message.classList.add("text-success");
     restartBtn.classList.remove("d-none");
@@ -58,12 +58,12 @@ submitGuessButton.addEventListener('click', function () {
     submitGuessButton.disabled = true;
   } else if (userGuess < secretNumber) {
     // Player 2's guess is too low
-    message.innerHTML = "📉 Too low. Try again!";
+    message.innerHTML = "Too low. Try again!";
     message.classList.remove("text-success");
     message.classList.add("text-danger");
   } else {
     // Player 2's guess is too high
-    message.innerHTML = "📈 Too high. Try again!";
+    message.innerHTML = "Too high. Try again!";
     message.classList.remove("text-success");
     message.classList.add("text-danger");
   }
@@ -73,7 +73,7 @@ submitGuessButton.addEventListener('click', function () {
 
   // Check if Player 2 has run out of attempts
   if (attempts <= 0 && userGuess !== secretNumber) {
-    message.innerHTML = `❌ Game Over! The number was ${secretNumber}. Player 2 lost.`;
+    message.innerHTML = `Game Over! The number was ${secretNumber}. Player 2 lost.`;
     restartBtn.classList.remove("d-none");
     guessInput.disabled = true;
     submitGuessButton.disabled = true;
